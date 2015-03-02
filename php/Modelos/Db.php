@@ -47,13 +47,12 @@ class Db{
 		}
 
 		//si la consulta es exitosa se retorna el array de los reusltados
-		while ($row = mysqli_fetch_assoc($result) {
+		while ($row = mysqli_fetch_assoc($result)){
 			$rows[] = $row;
 		}
 
 		return $rows;
 	}
-
 
 }
 

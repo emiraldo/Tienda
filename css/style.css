@@ -1,3 +1,70 @@
-p{
-	color: red;
+body{
+	margin: 0 auto;
+	height: 50%;
+	width: 80%;	
+	background: rgb(228,228,228);
+}
+
+#Titulo{
+	font: bold 1em "Trebuchet MS", Arial, Helvetica, sans-serif;
+	size:1em;	
+	margin-top: 1%;
+	width: 100%;
+	border: 1px solid black;
+}
+
+#Video{
+	width: 80%;
+	height: 400px;
+}
+
+#Juegos{
+
+	overflow: scroll;
+	float: left;
+	height: 700px;
+	width: 82%;
+	border : 1px solid black;
+	margin-top: 1%;
+}
+
+.ImagenJuego{
+
+	height: 130px;
+	width: 130px;
+	
+	
+}
+
+.Producto{
+
+	float: left;
+	height: 28%;
+	width: 15%;
+	margin-left: 7px;
+	border-style: ridge;
+}
+
+.Text{
+	text-align: center;
+}
+
+aside{
+
+	float: left;
+	width: 16%;
+	height: 700px;
+	margin-top: 1%;
+	margin-left: 1%;
+	border: 1px solid black;
+
+}
+
+footer{
+	float: left;
+	width: 100%;
+	height: 100px;
+	margin-bottom: 3%;
+	margin-top: 1%;
+	border: 1px solid black;
 }
