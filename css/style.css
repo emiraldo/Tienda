@@ -18,13 +18,33 @@ body{
 	height: 400px;
 }
 
-#Juegos{
+#TablaInfo{
+	width: 80%;
+}
+#TituloJuegoSelect{
+	font: bold 2em "Trebuchet MS", Arial, Helvetica, sans-serif;
+	size:1em;
+	text-align: center;
+}
+#SelectJuego{
+	margin-left: 15%;
+}
 
+tr {
+  border-style: ridge;
+}
+
+table { 
+  border-collapse: collapse; 
+}
+
+#Juegos{
+	background: rgb(255,255,255);
 	overflow: scroll;
 	float: left;
 	height: 700px;
 	width: 82%;
-	border : 1px solid black;
+	border-style: ridge;
 	margin-top: 1%;
 }
 

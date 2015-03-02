@@ -13,7 +13,7 @@
 			<h1>Prestamo de Videojuegos</h1>
 		</header><!--Termina header del body-->
 		<section id="Juegos">
-			<header >
+			<header id='TituloJuegoSelect'>
 				<h1>Prestamo de VideoJuegos</h1>
 			</header>
 					<?php

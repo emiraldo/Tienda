@@ -13,9 +13,6 @@
 			<h1>Prestamo de Videojuegos</h1>
 		</header><!--Termina header del body-->
 		<section id="Juegos">
-			<header >
-				<h1>Prestamo de VideoJuegos</h1>
-			</header>
 			<?php
 				require '../Controladores/Controller_Ver_Juego.php';
 				$id= $_GET["ID"];
@@ -23,11 +20,13 @@
 				$datos = $cont->get_Datos($id);
 				foreach ($datos as &$dato) {
 					echo  "
-					<article>
-						<header>".$dato["NOMBRE"]."</header>						
+						<header>
+							<h1 id='TituloJuegoSelect'>".$dato["NOMBRE"]."</h1>
+						</header>						
+						<article id='SelectJuego'>
 						<iframe class='youtube-player' type='text/html' id='Video' src='http://www.youtube.com/embed/".$dato["VIDEO"]."' frameborder='0'></iframe>
-						<table BORDER=1>
-							<tr>
+						<table  id='TablaInfo'>
+							<tr >
 								<td>
 									<div aling=left>Cantidad:  ".$dato["CANTIDAD"]." </div>
 									<div aling=left>Precio por dia: $".$dato["PRECIO"]."</div>
@@ -40,11 +39,15 @@
 								<td>
 									<p>Descripci&oacute;n:".$dato["DESCRIPCION"]."</p>
 								</td>
+								<td>
+								</td>
 							</tr>
 							<tr>
 								<td>
 									<p>Categoria: ".$dato["CATEGORIA"]."</p>
 								</td>
+								<td>
+								</td>								
 							</tr>
 						</table>
 
