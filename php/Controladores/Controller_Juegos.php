@@ -1,10 +1,8 @@
 <?php
-	require ('php/Modelos/Model_Juego.php');
-	require ('php/Modelos/Db.php');	
+	require ('../Modelos/Model_Juego.php');
+	require ('../Modelos/Db.php');	
 	class Controller_Juegos{
 
-		private $IdJuego;
-		private $funcion=0;
 		private $juego;
 		private $datos;
 		
@@ -12,8 +10,13 @@
 			$this->juego=new Model_Juego();
 		}
 
-		function get_Datos(){
+		function get_Juegos(){
 			$this->datos=$this->juego->get_juegos();
+			return $this->datos;
+		}
+
+		function get_Juego($id){
+			$this->datos=$this->juego->get_juego($id);
 			return $this->datos;
 		}		
 	}

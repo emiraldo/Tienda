@@ -14,10 +14,10 @@
 		</header><!--Termina header del body-->
 		<section id="Juegos">
 			<?php
-				require '../Controladores/Controller_Ver_Juego.php';
+				require '../Controladores/Controller_Juegos.php';
 				$id= $_GET["ID"];
-				$cont = new Controller_Ver_Juego();
-				$datos = $cont->get_Datos($id);
+				$cont = new Controller_Juegos();
+				$datos = $cont->get_Juego($id);
 				foreach ($datos as &$dato) {
 					echo  "
 						<header>
