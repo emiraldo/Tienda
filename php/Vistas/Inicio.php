@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+if(!isset($_SESSION["user"])){
+		// echo "Session is set"; // for testing purposes
+		header("Location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -34,6 +40,14 @@
 		</section>
 	</body>	
 	<aside>
+		<?php
+			if(isset($_SESSION["user"])){
+				echo "
+					<p>USER: ".$_SESSION['user']."</p>
+					<a href='../Controladores/logout.php' >CERRAR SESION</a>
+				";
+			}
+		?>
 
 	</aside>
 	<footer>

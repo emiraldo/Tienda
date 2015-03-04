@@ -1,43 +1,31 @@
 <?php
 	session_start();
-?>
+	require ("php/Controladores/Controller_Cliente.php");
 
-<?php require_once("includes/connection.php"); ?>
-<?php include("includes/header.php"); ?>
-
-<?php
-
-	if(isset($_SESSION["session_username"])){
+	if(isset($_SESSION["user"])){
 		// echo "Session is set"; // for testing purposes
 		header("Location: /php/Vistas/Inicio.php");
 	}
 
 	if(isset($_POST["login"])){
 
-		if(!empty($_POST['username']) && !empty($_POST['password'])) {
-    		$username=$_POST['username'];
-    		$password=$_POST['password'];
-
-		    $query =mysql_query("SELECT * FROM usertbl WHERE username='".$username."' AND password='".$password."'");
-
-		    $numrows=mysql_num_rows($query);
-    		if($numrows!=0) {
-			    while($row=mysql_fetch_assoc($query)){
-				    $dbusername=$row['username'];
-    				$dbpassword=$row['password'];
-    			}
-
-			    if($username == $dbusername && $password == $dbpassword){
-				    $_SESSION['session_username']=$username;
+		if(!empty($_POST['user']) && !empty($_POST['pass'])) {
+    		$user=$_POST['user'];
+    		$pass=$_POST['pass'];
+    		$registro = new Controller_Cliente();
+		    $numrows=$registro->get_Cliente($user);
+			if((count ($numrows))==0){
+			    if($user == $numrows["USER"] && $pass == $numrows["PASS"]){
+				    $_SESSION['user']=$user;
     				/* Redirect browser */
-				    header("Location: intropage.php");
+				    header("Location: php/Vistas/Inicio.php");
     			}
-    	} else {
-			$message =  "Nombre de usuario ó contraseña invalida!";
-    	}
+    		} else {
+				$message =  "Nombre de usuario ó contraseña invalida!";
+    		}
 
 		} else {
-	    	$message = "Todos los campos son requeridos!";
+	    		$message = "Todos los campos son requeridos!";
 		}
 	}
 ?>

@@ -17,7 +17,7 @@ class Model_Cliente{
 
 	public function get_clientes(){
 		$this->clientes=$this->db->db_select("Select * from CLIENTE");
-		return $this->cliente;
+		return $this->clientes;
 	}
 
 	public function get_cliente($id){

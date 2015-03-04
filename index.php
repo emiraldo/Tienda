@@ -13,20 +13,22 @@
 <body>
     <section >
         <article id='login'>
-        <h1>LOGIN</h1>
-        <p>
-            <label for="user_login">Nombre De Usuario<br />
-            <input type="text" name="username" id="username" class="input" value="" size="20" /></label>
-        </p>
-        <p>
-            <label for="user_pass">Contraseña<br />
-            <input type="password" name="password" id="password" class="input" value="" size="20" /></label>
-        </p>
-            <p class="submit">
-            <input type="submit" name="login" class="button" value="Entrar" />
-        </p>
-            <p class="regtext">No estas registrado? <a href="php/Vistas/Registro.php" >Registrate Aquí</a>!</p>
-            </article>
+            <form name="loginform" id="loginform" action="php/Controladores/login.php" method="POST">            
+                <h1>LOGIN</h1>
+                <p>
+                    <label for="user_login">Nombre De Usuario<br />
+                    <input type="text" name="user" id="user" class="input" value="" size="20" /></label>
+                </p>
+                <p>
+                    <label for="user_pass">Contraseña<br />
+                    <input type="password" name="pass" id="pass" class="input" value="" size="20" /></label>
+                </p>
+                <p class="submit">
+                    <input type="submit" name="login" class="button" value="Entrar" />
+                </p>
+                <p class="regtext">No estas registrado? <a href="php/Vistas/Registro.php" >Registrate Aquí</a>!</p>
+            </form>
+        </article>
     </section>
 </body>
 </html>

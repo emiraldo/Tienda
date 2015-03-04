@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["user"])){
+		// echo "Session is set"; // for testing purposes
+		header("Location: ../../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -25,28 +32,24 @@
 						</header>						
 						<article id='SelectJuego'>
 						<iframe class='youtube-player' type='text/html' id='Video' src='http://www.youtube.com/embed/".$dato["VIDEO"]."' frameborder='0'></iframe>
-						<table  id='TablaInfo'>
+						<table  id='TablaInfo' >
 							<tr >
 								<td>
 									<div aling=left>Cantidad:  ".$dato["CANTIDAD"]." </div>
 									<div aling=left>Precio por dia: $".$dato["PRECIO"]."</div>
-								</td>
-								<td>
-									<button type='button'>Alquilar</button>
+                   					<label for='tiempo'>Tiempo Prestamo: 
+                    				<input type='number' name='tiempo' id='tiempo' value='' Style='width:40Px' /></label>
+                    				<button type='button' onclick='Alquilar(".$dato["IDJUEGO"].",".$_SESSION['user'].")' >Alquilar</button>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<p>Descripci&oacute;n:".$dato["DESCRIPCION"]."</p>
 								</td>
-								<td>
-								</td>
 							</tr>
 							<tr>
 								<td>
 									<p>Categoria: ".$dato["CATEGORIA"]."</p>
-								</td>
-								<td>
 								</td>								
 							</tr>
 						</table>
@@ -61,5 +64,20 @@
 				
 			?>
 		</table>
+	</section>
 	</body>
+	<aside>
+		<?php
+			if(isset($_SESSION["user"])){
+				echo "
+					<p>USER: ".$_SESSION['user']."</p>
+					<a href='../Controladores/logout.php' >CERRAR SESION</a>
+				";
+			}
+		?>
+
+	</aside>
+	<footer>
+
+	</footer>
 </html>	

@@ -1,6 +1,7 @@
 <?php
+
 	require ('../Modelos/Model_Cliente.php');
-	require ('../Modelos/Db.php');	
+	require ('../Modelos/Db.php');
 
 	class Controller_Cliente{
 
@@ -36,7 +37,7 @@
 			$cedula=$_POST['cedula'];
 			$user=$_POST['user'];
 			$pass=$_POST['pass'];
-			$numrows=$registro->get_Cliente($cedula);
+			$numrows=$registro->get_Cliente($user);
 			if((count ($numrows))==0){
 				$result=$registro->set_Cliente($cedula, $nombre, $apellido, $telefono, $user, $pass);
 				if($result){
