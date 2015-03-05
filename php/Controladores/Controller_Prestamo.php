@@ -1,6 +1,6 @@
 <?php
 require ("../Modelos/Model_Prestamo.php");
-require ("../Modelos/Db.php");
+
 class Controller_Prestamo{
 
 		private $prestamo;
@@ -15,13 +15,14 @@ class Controller_Prestamo{
 			return $this->datos;
 		}
 
-		function set_Prestamo($fecha1, $fecha2, $pago, $cliente, $juego, $cantidad){
-			$this->datos = $this->prestamo->set_prestamo($fecha1, $fecha2, $pago, $cliente, $juego, $cantidad);
+		function set_Prestamo($fecha1, $fecha2, $pago, $cliente, $juego){
+			$this->datos = $this->prestamo->set_prestamo($fecha1, $fecha2, $pago, $cliente, $juego);
 			return $this->datos;
 		}
 }
 
 if(!empty($_POST['JUEGO']) && !empty($_POST['USER']) && !empty($_POST['TIEMPO']) && !empty($_POST['PAGO'])) {
+	require ("../Modelos/Db.php");
 	$idjuego=$_POST['JUEGO'];
 	$user=$_POST['USER'];
 	$tiempo=$_POST['TIEMPO'];

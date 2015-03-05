@@ -21,6 +21,7 @@ if(!isset($_SESSION["user"])){
 		</header><!--Termina header del body-->
 		<section id="Juegos">
 			<?php
+				require ('../Modelos/Db.php');
 				require '../Controladores/Controller_Juegos.php';
 				require '../Controladores/Controller_Categoria.php';
 				$id= $_GET["ID"];

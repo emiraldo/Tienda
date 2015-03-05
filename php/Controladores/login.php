@@ -1,6 +1,7 @@
 <?php
 	
 	session_start();
+	require ('../Modelos/Db.php');
 	require ("Controller_Cliente.php");
 
 	if(isset($_SESSION["user"])){

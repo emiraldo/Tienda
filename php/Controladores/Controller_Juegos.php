@@ -1,6 +1,6 @@
 <?php
 	require ('../Modelos/Model_Juego.php');
-	require ('../Modelos/Db.php');	
+	
 	class Controller_Juegos{
 
 		private $juego;
@@ -41,25 +41,26 @@
 			if($result){
 					echo "
 						<script>
-							alert('Cuenta Correctamente Creada')
+							alert('Juego Creado Correctamente')
 							window.location.href = '../Vistas/AgregarJuegos.php'
 						</script>";	
 				} else {
 		 			$mensaje = "Error al ingresar datos de la informacion!";
-				}
-			} else {
-				$mensaje = "Error en los datos ingresados!";
-			}
-
-		} else {
-		 	$mensaje = "Todos los campos no deben de estar vacios!";
-		}
-	if (!empty($mensaje)) {
-		echo "
+		 			echo "
 			<script>
 				alert('".$mensaje."')
 				window.location.href = '../Vistas/AgregarJuegos.php'
-			</script>";		
-	}
+			</script>";	
+				}
+			} else {
+				$mensaje = "Error en los datos ingresados!";
+				echo "
+			<script>
+				alert('".$mensaje."')
+				window.location.href = '../Vistas/AgregarJuegos.php'
+			</script>";	
+			}
+
+		} 
 	
 ?>

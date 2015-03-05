@@ -1,7 +1,7 @@
 <?php
 
 	require ('../Modelos/Model_Cliente.php');
-	require ('../Modelos/Db.php');
+	
 
 	class Controller_Cliente{
 

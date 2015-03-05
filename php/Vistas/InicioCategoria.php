@@ -24,6 +24,7 @@ if(!isset($_SESSION["user"])){
 				<h1>Prestamo de VideoJuegos</h1>
 			</header>
 					<?php
+						require ('../Modelos/Db.php');
 						require '../Controladores/Controller_Juegos.php';
 						$cont = new Controller_Juegos();
 						$datos = $cont->get_Juegos();

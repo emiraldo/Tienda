@@ -84,6 +84,15 @@ table {
 	border-style: ridge;
 }
 
+.Producto1{
+
+	float: left;
+	height: 40%;
+	width: 15%;
+	margin-left: 7px;
+	border-style: ridge;
+}
+
 .Text{
 	text-align: center;
 }

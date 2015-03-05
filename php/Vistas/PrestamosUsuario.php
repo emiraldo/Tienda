@@ -24,27 +24,35 @@ if(!isset($_SESSION["user"])){
 				<h1>Historial VideoJuegos Alquilados</h1>
 			</header>
 					<?php
+						require ('../Modelos/Db.php');
 						require '../Controladores/Controller_Prestamo.php';
 						require '../Controladores/Controller_Cliente.php';
 						require '../Controladores/Controller_Juegos.php';
 						$clien = new Controller_Cliente();
 						$cont = new Controller_Prestamo();
 						$jueg = new Controller_Juegos();
-						$cliente = $clien->getCliente1($_SESSION["user"]);
+						$cliente = $clien->get_Cliente1($_SESSION["user"]);
 						$cliente = $cliente[0];
 						$datos = $cont->get_Prestamo($cliente["CEDULA"]);
-						
-						foreach ($datos as &$dato) {
-							$juego=$jueg->get_Juego($dato["IDJUEGO"]);
-							$juego=$juego[0];
-								echo  "
-									<article class='Producto'>
-										<img class='ImagenJuego' src='../../".$juego["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$juego["IDJUEGO"]."></img>
-										<div class='Text'>Cantidad:  ".$juego["CANTIDAD"]." </div>
-										<div class='Text'>Precio por dia: $".$juego["PRECIO"]."</div>
-									</article>
-										";
-							
+						if(count($cliente)>0){
+							foreach ($datos as &$dato) {
+								$juego=$jueg->get_Juego($dato["IDJUEGO"]);
+								$juego=$juego[0];
+								$canti = $dato["PAGO"]/ $juego["PRECIO"];
+									echo  "
+										<article class='Producto1'>
+											<img class='ImagenJuego' src='../../".$juego["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$juego["IDJUEGO"]."></img>
+											<div class='Text'>Cantidad:  ".$canti." </div>
+											<div class='Text'>Fecha Alquiler:  ".$dato["FECHA1"]." </div>
+											<div class='Text'>Fecha Entrega:  ".$dato["FECHA2"]." </div>
+											<div class='Text'>Pago realizado: $".$dato["PAGO"]."</div>
+										</article>
+											";
+							}
+						}else{
+							echo"<article class='Producto'>
+									<p>No ha alquilado ningun juego</p>
+								</article>";
 						}
 					?>
 		</section>
