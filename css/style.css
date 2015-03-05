@@ -54,7 +54,19 @@ table {
 	border-style: ridge;
 	margin-top: 1%;
 }
+#NJuegos{
+		
+	float: left;
+	height: 700px;
+	width: 82%;
+	border-style: ridge;
+	margin-top: 1%;
+}
 
+#NuevoJuego{
+	margin-left: 15%;
+	margin-top: 5%;
+}
 .ImagenJuego{
 
 	height: 130px;
@@ -76,6 +88,12 @@ table {
 	text-align: center;
 }
 
+#infoUser{
+	border-style: ridge;
+}
+#Categorias{
+	border-style: ridge;	
+}
 aside{
 
 	float: left;
@@ -83,7 +101,7 @@ aside{
 	height: 700px;
 	margin-top: 1%;
 	margin-left: 1%;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 
 }
 

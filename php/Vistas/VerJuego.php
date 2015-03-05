@@ -22,10 +22,15 @@ if(!isset($_SESSION["user"])){
 		<section id="Juegos">
 			<?php
 				require '../Controladores/Controller_Juegos.php';
+				require '../Controladores/Controller_Categoria.php';
 				$id= $_GET["ID"];
+				$cate = new Controller_Categoria();
 				$cont = new Controller_Juegos();
 				$datos = $cont->get_Juego($id);
+				$categori = $cate->get_Categorias();
 				foreach ($datos as &$dato) {
+					foreach ($categori as &$catego){
+					if($catego["ID"] == $dato["IDCATEGORIA"])
 					echo  "
 						<header>
 							<h1 id='TituloJuegoSelect'>".$dato["NOMBRE"]."</h1>
@@ -39,27 +44,25 @@ if(!isset($_SESSION["user"])){
 									<div aling=left>Precio por dia: $".$dato["PRECIO"]."</div>
                    					<label for='tiempo'>Tiempo Prestamo: 
                     				<input type='number' name='tiempo' id='tiempo' value='' Style='width:40Px' /></label>
-                    				<button type='button' onclick='Alquilar(".$dato["IDJUEGO"].",".$_SESSION['user'].")' >Alquilar</button>
+                    				<button type='button' onclick='Alquilar(".$dato["IDJUEGO"].",\"".$_SESSION['user']."\", ".$dato["PRECIO"].")' >Alquilar</button>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<p>Descripci&oacute;n:".$dato["DESCRIPCION"]."</p>
+									<p>Descripci&oacute;n:".$dato["DESCRIPCION"]." </p>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<p>Categoria: ".$dato["CATEGORIA"]."</p>
+									<p> Plataforma:".$dato["PLATAFORMA"]."<br>
+									Categoria: ".$catego["DESCRIPCION"]."</p>
 								</td>								
 							</tr>
 						</table>
-
-
-
 						
-
 					</article>
 					";
+				}
 				}
 				
 			?>

@@ -22,6 +22,11 @@
 			return $this->datos;
 		}
 
+		function get_Cliente1($user){
+			$this->datos=$this->cliente->get_cliente1($user);
+			return $this->datos;
+		}
+
 		function set_Cliente($cedula, $nombre, $apellido, $telefono, $user, $pass){
 			$this->datos = $this->cliente->set_cliente($cedula, $nombre, $apellido, $telefono, $user, $pass);
 			return $this->datos;
@@ -37,7 +42,7 @@
 			$cedula=$_POST['cedula'];
 			$user=$_POST['user'];
 			$pass=$_POST['pass'];
-			$numrows=$registro->get_Cliente($user);
+			$numrows=$registro->get_Cliente($cedula);
 			if((count ($numrows))==0){
 				$result=$registro->set_Cliente($cedula, $nombre, $apellido, $telefono, $user, $pass);
 				if($result){

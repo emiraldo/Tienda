@@ -1,4 +1,5 @@
 <?php
+
 class Model_Cliente{
 	private $db;
 	private $clientes;
@@ -22,6 +23,11 @@ class Model_Cliente{
 
 	public function get_cliente($id){
 		$this->cliente=$this->db->db_select("Select * from CLIENTE where CEDULA=".$id.";");
+		return $this->cliente;
+	}
+
+	public function get_cliente1($user){
+		$this->cliente=$this->db->db_select("Select * from CLIENTE where USER='".$user."';");
 		return $this->cliente;
 	}
 

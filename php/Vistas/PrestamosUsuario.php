@@ -21,21 +21,30 @@ if(!isset($_SESSION["user"])){
 		</header><!--Termina header del body-->
 		<section id="Juegos">
 			<header id='TituloJuegoSelect'>
-				<h1>Prestamo de VideoJuegos</h1>
+				<h1>Historial VideoJuegos Alquilados</h1>
 			</header>
 					<?php
+						require '../Controladores/Controller_Prestamo.php';
+						require '../Controladores/Controller_Cliente.php';
 						require '../Controladores/Controller_Juegos.php';
-						$cont = new Controller_Juegos();
-						$datos = $cont->get_Juegos();
+						$clien = new Controller_Cliente();
+						$cont = new Controller_Prestamo();
+						$jueg = new Controller_Juegos();
+						$cliente = $clien->getCliente1($_SESSION["user"]);
+						$cliente = $cliente[0];
+						$datos = $cont->get_Prestamo($cliente["CEDULA"]);
 						
 						foreach ($datos as &$dato) {
-							echo  "
-								<article class='Producto'>
-									<img class='ImagenJuego' src='../../".$dato["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$dato["IDJUEGO"]."></img>
-									<div class='Text'>Cantidad:  ".$dato["CANTIDAD"]." </div>
-									<div class='Text'>Precio por dia: $".$dato["PRECIO"]."</div>
-								</article>
-									";
+							$juego=$jueg->get_Juego($dato["IDJUEGO"]);
+							$juego=$juego[0];
+								echo  "
+									<article class='Producto'>
+										<img class='ImagenJuego' src='../../".$juego["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$juego["IDJUEGO"]."></img>
+										<div class='Text'>Cantidad:  ".$juego["CANTIDAD"]." </div>
+										<div class='Text'>Precio por dia: $".$juego["PRECIO"]."</div>
+									</article>
+										";
+							
 						}
 					?>
 		</section>
@@ -48,7 +57,7 @@ if(!isset($_SESSION["user"])){
 				echo "
 					<div id='infoUser'>USER: ".$_SESSION['user']."
 					<br>
-					<a href='PrestamosUsuario.php' >OPCIONES USUARIO</a>
+					<a href='Inicio.php' >INICIO</a>
 					<br>
 					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
 				";

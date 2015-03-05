@@ -1,4 +1,5 @@
 <?php
+
 class Db{
 
 	//La conexion de la base de datos

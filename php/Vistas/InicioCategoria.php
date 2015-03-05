@@ -29,13 +29,15 @@ if(!isset($_SESSION["user"])){
 						$datos = $cont->get_Juegos();
 						
 						foreach ($datos as &$dato) {
-							echo  "
-								<article class='Producto'>
-									<img class='ImagenJuego' src='../../".$dato["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$dato["IDJUEGO"]."></img>
-									<div class='Text'>Cantidad:  ".$dato["CANTIDAD"]." </div>
-									<div class='Text'>Precio por dia: $".$dato["PRECIO"]."</div>
-								</article>
-									";
+							if($dato["IDCATEGORIA"] == $_GET["ID"]){
+								echo  "
+									<article class='Producto'>
+										<img class='ImagenJuego' src='../../".$dato["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$dato["IDJUEGO"]."></img>
+										<div class='Text'>Cantidad:  ".$dato["CANTIDAD"]." </div>
+										<div class='Text'>Precio por dia: $".$dato["PRECIO"]."</div>
+									</article>
+										";
+							}
 						}
 					?>
 		</section>
@@ -48,7 +50,7 @@ if(!isset($_SESSION["user"])){
 				echo "
 					<div id='infoUser'>USER: ".$_SESSION['user']."
 					<br>
-					<a href='PrestamosUsuario.php' >OPCIONES USUARIO</a>
+					<a href='../Controladores/logout.php' >OPCIONES USUARIO</a>
 					<br>
 					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
 				";

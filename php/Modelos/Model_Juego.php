@@ -19,6 +19,12 @@ class Model_Juego{
 		return $this->juegos;
 	}
 
+	public function set_juego($nombre, $descripcion, $precio, $cantidad, $plataforma, $imagen, $video, $categoria){
+		$query="Insert into JUEGO (NOMBRE, DESCRIPCION, CANTIDAD, PRECIO, PLATAFORMA, IMAGEN, VIDEO, IDCATEGORIA) values('$nombre','$descripcion','$cantidad','$precio','$plataforma','$imagen','$video','$categoria');";
+		$this->juegos=$this->db->db_query($query);
+		return $this->juegos;		
+	}
+
 }
 
 ?>
