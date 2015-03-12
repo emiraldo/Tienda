@@ -20,6 +20,11 @@
 			return $this->datos;
 		}
 
+		function get_Juego1($nombre){
+			$this->datos=$this->juego->get_juego1($nombre);
+			return $this->datos;
+		}
+
 		function set_Juego($nombre, $descripcion, $precio, $cantidad, $plataforma, $imagen, $video, $categoria){
 			$this->datos = $this->juego->set_juego($nombre, $descripcion, $precio, $cantidad, $plataforma, $imagen, $video, $categoria);
 			return $this->datos;
@@ -67,6 +72,29 @@
 					</script>";	
 			}
 
+		}
+
+
+		if(isset($_POST["Buscar"])){
+			require ('../Modelos/Db.php');
+			if(isset($_POST["buscar"])){
+				$registro = new Controller_Juegos();
+				$nombre=$_POST["buscar"];
+				$juego=$registro->get_Juego1($nombre);
+				if(count($juego)>0){
+					$juego=$juego[0];
+
+					echo "<script>
+							window.location.href = '../Vistas/VerJuego.php?ID=".$juego["IDJUEGO"]."'
+						</script>";
+				}else{
+					echo "<script>
+							alert('El juego no existe')
+							window.location.href = '../Vistas/Inicio.php'
+						</script>";					
+				}
+
+			}
 		} 
 	
 ?>
