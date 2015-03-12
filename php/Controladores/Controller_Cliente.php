@@ -34,6 +34,7 @@
 	}
 
 	if(isset($_POST["registrar"])){
+		require ('../Modelos/Db.php');
 		$registro = new Controller_Cliente();
 		if(!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['user']) && !empty($_POST['pass'])) {
 			$nombre=$_POST['nombre'];

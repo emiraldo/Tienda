@@ -11,6 +11,7 @@
 	<section >
         <article id='registro'>
 		<h1>Registrar</h1>
+
 		<form name="registroform" id="registroform" action="../Controladores/Controller_Cliente.php" method="post">
 			<p>
 				<label for="user_login">Nombre<br />

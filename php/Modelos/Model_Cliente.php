@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Model_Cliente{
 	private $db;
 	private $clientes;
