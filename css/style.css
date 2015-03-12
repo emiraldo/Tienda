@@ -6,12 +6,12 @@ body{
 }
 #masquilados{
 	overflow: scroll;
-	height: 57%;
+	height: 42.5%;
 	list-style-type:none;
 	width: 90%;
+	border-style: ridge;
 }
-
-
+ 
 #login{
 	margin-left: 40%;
 	margin-top: 20%;

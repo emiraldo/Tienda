@@ -11,6 +11,11 @@ function DescripcionJuego(IdJuego){
 	window.location.href = "VerJuego.php?ID="+IdJuego+""
 }
 
+function AgregarCarrito(){
+	
+}
+
+
 function Alquilar(IdJuego , User, precio){
 	var tiempo=$("#tiempo").val()
 	var total =  parseFloat(tiempo) * parseFloat(precio)

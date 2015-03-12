@@ -47,11 +47,22 @@ if(!isset($_SESSION["user"])){
 		
 		<?php
 			require '../Controladores/Controller_Categoria.php';
+			require '../Controladores/Controller_Cliente.php';
+			$cont = new Controller_Cliente();
+			
 			if(isset($_SESSION["user"])){
+				$datos = $cont->get_Cliente1($_SESSION["user"]);
+				$datos = $datos[0];
 				echo "
-					<div id='infoUser'>USER: ".$_SESSION['user']."
+					<div id='infoUser'>
+					USER: ".$datos['USER']."
 					<br>
-					<a href='../Controladores/logout.php' >PERFIL</a>
+
+					<img width='80' height='80' src='../../".$datos["IMAGEN"]."''  ></img>
+					<br>
+					<a href='../Controladores/logout.php' >VER CARRITO</a>
+					<br>
+					<a href='PrestamosUsuario.php' >PERFIL</a>
 					<br>
 					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
 				";
