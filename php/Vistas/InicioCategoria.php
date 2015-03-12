@@ -60,7 +60,7 @@ if(!isset($_SESSION["user"])){
 
 					<img width='80' height='80' src='../../".$datos["IMAGEN"]."''  ></img>
 					<br>
-					<a href='../Controladores/logout.php' >VER CARRITO</a>
+					<a href='Carrito.php' >VER CARRITO</a>
 					<br>
 					<a href='PrestamosUsuario.php' >PERFIL</a>
 					<br>
@@ -85,6 +85,7 @@ if(!isset($_SESSION["user"])){
 			<?php
 			     require '../Controladores/Controller_Masbuscado.php';
 			     $mas = new Controller_Masbuscado();
+			     $cont = new Controller_Juegos();
 			     $datos = $mas->get_masbuscado();
 			      foreach ($datos as &$dato) {
 			      	$dato=$cont->get_Juego($dato['IDJUEGO']);

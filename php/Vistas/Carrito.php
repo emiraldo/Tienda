@@ -10,8 +10,8 @@ if(!isset($_SESSION["user"])){
 	<head>
  		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="../../css/style.css">
-		<script type="text/javascript" src="../../js/script.js"></script>
 		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript" src="../../js/script.js"></script>
 		<title>Catalogo de VideoJuegos</title>	
 	</head>
  		
@@ -21,31 +21,30 @@ if(!isset($_SESSION["user"])){
 		</header><!--Termina header del body-->
 		<section id="Juegos">
 			<header id='TituloJuegoSelect'>
-				<h1>Historial VideoJuegos Alquilados</h1>
+				<h1>Carrito de compras!!!</h1>
 			</header>
 					<?php
-						require ('../Modelos/Db.php');
-						require '../Controladores/Controller_Prestamo.php';
+						require '../Modelos/Db.php';
+						require '../Controladores/Controller_Carrito.php';
 						require '../Controladores/Controller_Cliente.php';
 						require '../Controladores/Controller_Juegos.php';
 						$clien = new Controller_Cliente();
-						$cont = new Controller_Prestamo();
+						$carr = new Controller_Carrito();
 						$jueg = new Controller_Juegos();
 						$cliente = $clien->get_Cliente1($_SESSION["user"]);
 						$cliente = $cliente[0];
-						$datos = $cont->get_Prestamo($cliente["CEDULA"]);
+						$datos = $carr->get_Carro();
 						if(count($cliente)>0){
 							foreach ($datos as &$dato) {
 								$juego=$jueg->get_Juego($dato["IDJUEGO"]);
 								$juego=$juego[0];
 								$canti = $dato["PAGO"]/ $juego["PRECIO"];
 									echo  "
-										<article class='Producto1'>
+										<article class='Producto'>
 											<img class='ImagenJuego' src='../../".$juego["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$juego["IDJUEGO"]."></img>
 											<div class='Text'>Cantidad:  ".$canti." </div>
-											<div class='Text'>Fecha Alquiler:  ".$dato["FECHA1"]." </div>
-											<div class='Text'>Fecha Entrega:  ".$dato["FECHA2"]." </div>
-											<div class='Text'>Pago realizado: $".$dato["PAGO"]."</div>
+											<div class='Text'>Valor Total: $".$dato["PAGO"]."</div>
+
 										</article>
 											";
 							}
@@ -74,11 +73,18 @@ if(!isset($_SESSION["user"])){
 
 					<img width='80' height='80' src='../../".$datos["IMAGEN"]."''  ></img>
 					<br>
-					<a href='Carrito.php' >VER CARRITO</a>
+					<a href='PrestamosUsuario.php' >PERFIL</a>
 					<br>
 					<a href='Inicio.php' >INICIO</a>
 					<br>
-					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
+					<a href='../Controladores/logout.php' >CERRAR SESION</a>
+					
+					<button type='button' id='terminar' style='margin-left:2%'>
+						<img src='../../img/carrito.png' width='120' height='120' ></img>
+					</button>
+
+
+					</div>
 				";
 
 			}

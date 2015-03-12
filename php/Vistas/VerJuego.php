@@ -44,8 +44,8 @@ if(!isset($_SESSION["user"])){
 									<div aling=left>Cantidad:  ".$dato["CANTIDAD"]." </div>
 									<div aling=left>Precio por dia: $".$dato["PRECIO"]."</div>
                    					<label for='tiempo'>Tiempo Prestamo: 
-                    				<input type='number' name='tiempo' id='tiempo' value='' Style='width:40Px' /></label>
-                    				<button type='button' onclick='Alquilar(".$dato["IDJUEGO"].",\"".$_SESSION['user']."\", ".$dato["PRECIO"].")' >Alquilar</button>
+                    				<input type='number' name='tiempo' id='tiempo' value='0' Style='width:40Px' /></label>
+                    				<button type='button' onclick='AgregarCarrito(".$dato["IDJUEGO"].",".$dato["PRECIO"].")' >Alquilar</button>
 								</td>
 							</tr>
 							<tr>
@@ -72,11 +72,28 @@ if(!isset($_SESSION["user"])){
 	</body>
 	<aside>
 		<?php
+			require '../Controladores/Controller_Cliente.php';
+			$cont = new Controller_Cliente();
+			
 			if(isset($_SESSION["user"])){
+				$datos = $cont->get_Cliente1($_SESSION["user"]);
+				$datos = $datos[0];
 				echo "
-					<p>USER: ".$_SESSION['user']."</p>
-					<a href='../Controladores/logout.php' >CERRAR SESION</a>
+					<div id='infoUser'>
+					USER: ".$datos['USER']."
+					<br>
+
+					<img width='80' height='80' src='../../".$datos["IMAGEN"]."''  ></img>
+					<br>
+					<a href='Carrito.php' >VER CARRITO</a>
+					<br>
+					<a href='Inicio.php' >INICIO</a>
+					<br>
+					<a href='PrestamosUsuario.php' >PERFIL</a>
+					<br>
+					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
 				";
+
 			}
 		?>
 
