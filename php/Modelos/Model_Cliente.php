@@ -12,8 +12,8 @@ class Model_Cliente{
 		
 	}
 
-	public function set_cliente($cedula, $nombre, $apellido, $telefono, $user, $pass){
-		$query = "Insert into CLIENTE (CEDULA, NOMBRE, APELLIDO, TELEFONO, USER, PASS) values ('$cedula','$nombre','$apellido','$telefono','$user','$pass');";
+	public function set_cliente($cedula, $nombre, $apellido, $telefono, $email, $user, $pass){
+		$query = "Insert into CLIENTE (CEDULA, NOMBRE, APELLIDO, TELEFONO, EMAIL, USER, PASS) values ('$cedula','$nombre','$apellido','$telefono', '$email', '$user','$pass');";
 		$this->clientes=$this->db->db_query($query);
 		return $this->clientes;
 	}

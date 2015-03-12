@@ -49,7 +49,7 @@ if(!isset($_SESSION["user"])){
 				echo "
 					<div id='infoUser'>USER: ".$_SESSION['user']."
 					<br>
-					<a href='PrestamosUsuario.php' >OPCIONES USUARIO</a>
+					<a href='PrestamosUsuario.php' >PERFIL</a>
 					<br>
 					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
 				";
@@ -65,7 +65,7 @@ if(!isset($_SESSION["user"])){
 			}
 
 		?>
-			<li ><a href='Inicio.php' >TODAS</a></li>
+			<li ><a href='Inicio.php' >Todas</a></li>
 		</ul>
 
 

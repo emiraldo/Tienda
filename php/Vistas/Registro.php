@@ -14,6 +14,10 @@
 
 		<form name="registroform" id="registroform" action="../Controladores/Controller_Cliente.php" method="post">
 			<p>
+				<label for="user_login">E-mail<br />
+				<input type="text" name="email" id="email" class="input" size="32" value=""  /></label>
+			</p>
+			<p>
 				<label for="user_login">Nombre<br />
 				<input type="text" name="nombre" id="nombre" class="input" size="32" value=""  /></label>
 			</p>
@@ -30,7 +34,7 @@
 				<input type="text" name="telefono" id="telefono" class="input" value="" size="32" /></label>
 			</p>
 			<p>
-				<label for="user_pass">Nombre De Usuario<br />
+				<label for="user_pass">Usuario<br />
 				<input type="text" name="user" id="user" class="input" value="" size="15" /></label>
 			</p>	
 			<p>

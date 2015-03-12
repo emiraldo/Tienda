@@ -27,8 +27,8 @@
 			return $this->datos;
 		}
 
-		function set_Cliente($cedula, $nombre, $apellido, $telefono, $user, $pass){
-			$this->datos = $this->cliente->set_cliente($cedula, $nombre, $apellido, $telefono, $user, $pass);
+		function set_Cliente($cedula, $nombre, $apellido, $telefono, $email, $user, $pass){
+			$this->datos = $this->cliente->set_cliente($cedula, $nombre, $apellido, $telefono, $email, $user, $pass);
 			return $this->datos;
 		}
 	}
@@ -36,7 +36,8 @@
 	if(isset($_POST["registrar"])){
 		require ('../Modelos/Db.php');
 		$registro = new Controller_Cliente();
-		if(!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['user']) && !empty($_POST['pass'])) {
+		if(!empty($_POST['email']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['cedula']) && !empty($_POST['telefono']) && !empty($_POST['user']) && !empty($_POST['pass'])) {
+			$email=$_POST['email'];
 			$nombre=$_POST['nombre'];
 			$apellido=$_POST['apellido'];
 			$telefono=$_POST['telefono'];
@@ -45,7 +46,7 @@
 			$pass=$_POST['pass'];
 			$numrows=$registro->get_Cliente($cedula);
 			if((count ($numrows))==0){
-				$result=$registro->set_Cliente($cedula, $nombre, $apellido, $telefono, $user, $pass);
+				$result=$registro->set_Cliente($cedula, $nombre, $apellido, $telefono, $email, $user, $pass);
 				if($result){
 					echo "
 						<script>
