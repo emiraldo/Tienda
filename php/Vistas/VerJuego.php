@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["user"])){
-		// echo "Session is set"; // for testing purposes
+		
 		header("Location: ../../index.php");
 }
 ?>

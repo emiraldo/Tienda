@@ -4,6 +4,14 @@ body{
 	width: 80%;	
 	background: rgb(228,228,228);
 }
+#masquilados{
+	overflow: scroll;
+	height: 57%;
+	list-style-type:none;
+	width: 90%;
+}
+
+
 #login{
 	margin-left: 40%;
 	margin-top: 20%;
@@ -68,11 +76,8 @@ table {
 	margin-top: 5%;
 }
 .ImagenJuego{
-
 	height: 130px;
-	width: 130px;
-	
-	
+	width: 130px;	
 }
 
 .Producto{

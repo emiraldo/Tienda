@@ -69,6 +69,22 @@ if(!isset($_SESSION["user"])){
 		?>
 			<li ><a href='Inicio.php' >Todas</a></li>
 		</ul>
+		<h1>MAS ALQUILADOS</h1>
+		<ul id='masquilados'>
+			<?php
+			     require '../Controladores/Controller_Masbuscado.php';
+			     $mas = new Controller_Masbuscado();
+			     $datos = $mas->get_masbuscado();
+			      foreach ($datos as &$dato) {
+			      	$dato=$cont->get_Juego($dato['IDJUEGO']);
+			      	$dato=$dato[0];
+				  echo  "<li>
+				  		<img class='ImagenJuego' src='../../".$dato["IMAGEN"]."''  onclick='DescripcionJuego(this.id)' id=".$dato["IDJUEGO"]."></img>
+				  		</li>";
+			     }
+			  ?>   				 
+			  
+		</ul>  
 
 
 	</aside>
