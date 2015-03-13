@@ -45,9 +45,6 @@ body{
 	margin-left: 15%;
 }
 
-tr {
-  border-style: ridge;
-}
 
 table { 
   border-collapse: collapse; 
@@ -92,10 +89,27 @@ table {
 .Producto1{
 
 	float: left;
-	height: 40%;
+	height: 38%;
 	width: 15%;
 	margin-left: 7px;
 	border-style: ridge;
+}
+
+#tablaDatos{
+	margin-left: 5%;
+	margin-top: 5%;
+	height: 100%;
+	width: 90%;
+}
+
+#datos{
+
+	float: left;
+	height: 50%;
+	width: 80%;
+	margin-left: 10%;
+	margin-bottom: 15px;
+
 }
 
 .Text{

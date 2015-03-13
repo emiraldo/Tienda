@@ -25,12 +25,20 @@ if(!empty($_POST['CARRITO'])){
 	
 	require ("../Modelos/Db.php");
 	require ("../Modelos/Model_Carrito.php");
+	require ("../Modelos/Model_Juego.php");
 
 	$carrito=new Model_Carrito(); 
+	$jueg=new Model_Juego();
+
 	$Cjuegos=$carrito->get_carro();
+
 
 	foreach ($Cjuegos as $juego) {
 		$idjuego=$juego['IDJUEGO'];
+		$juegos=$jueg->get_juego($idjuego);
+		$juegos=$juegos[0];
+		$cantidad=intval($juegos["CANTIDAD"]);
+		$jueg->mod_cant_juego($idjuego,$cantidad);
 		$user=$_POST['CARRITO'];
 		$tiempo=$juego['TIEMPO'];
 		$pago=$juego['PAGO'];
@@ -40,7 +48,6 @@ if(!empty($_POST['CARRITO'])){
 		$rta=$pres->set_Prestamo($fecha1, $fecha2, $pago, $user, $idjuego);
 		echo $rta;
 	}
-
 	$carrito->del_carro();
 	
 }

@@ -30,6 +30,12 @@ class Model_Juego{
 		return $this->juegos;		
 	}
 
+	public function mod_cant_juego($id, $cantidad){
+		$query="Update JUEGO set CANTIDAD='$cantidad' where IDJUEGO=".$id." ;";
+		$this->juegos=$this->db->db_query($query);
+		return $this->juegos;		
+	}
+
 }
 
 ?>
