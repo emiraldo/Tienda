@@ -74,8 +74,8 @@ if(!isset($_SESSION["user"])){
       <aside>
     
     <?php
-      require '../Controladores/Controller_Categoria.php';
-      require '../Controladores/Controller_Cliente.php';
+      require ('../Controladores/Controller_Categoria.php');
+      require ('../Controladores/Controller_Cliente.php');
       $cont = new Controller_Cliente();
       
       if(isset($_SESSION["user"])){

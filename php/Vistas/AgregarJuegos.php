@@ -3,6 +3,10 @@ session_start();
 if(!isset($_SESSION["user"])){
 		header("Location: ../../index.php");
 }
+require '../Modelos/Db.php';
+require '../Controladores/Controller_Categoria.php';
+$categorias= new Controller_Categoria();
+$categorias=$categorias->get_Categorias();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,9 +58,14 @@ if(!isset($_SESSION["user"])){
 						<label >Categoria<br />
 						<input type="text" name="categoria1" list="categoria" id='categoria1'>
 							<datalist id='categoria' >
-   								<option value='1'>Deportes</option>
-   								<option value='2'>Accion</option>
-   								<option value='3'>Aventura</option>
+   								<?php
+								foreach ($categorias as $categoria){
+									echo "
+										<option value='".$categoria["ID"]."'>".$categoria["DESCRIPCION"]."</option>
+
+									";
+								}
+								?>
 							</datalist>
 						</input>
 					</p>
@@ -68,19 +77,24 @@ if(!isset($_SESSION["user"])){
 		</section>
 	</body>	
 	<aside>
-		
+	
 		<?php
-			require '../Controladores/Controller_Categoria.php';
+			
 			if(isset($_SESSION["user"])){
 				echo "
 					<div id='infoUser'>USER: ".$_SESSION['user']."
-					<br>
-					<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
+          			<br>
+			        <a href='AgregarJuegos.php' >JUEGOS</a>
+          			<br>      
+        			<a href='Categorias.php' >CATEGORIAS</a>
+		          	<a href='listadoUsuarios.php' >USUARIOS</a>
+		          	<br>
+          			<a href='../Controladores/logout.php' >CERRAR SESION</a></div>
 				";
 
 			}
 		?>
-		</ul>
+		
 	</aside>
 	<footer>
 

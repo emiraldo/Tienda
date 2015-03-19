@@ -159,6 +159,10 @@ table {
 	border-style: ridge;
 	border-radius: 10px;	
 }
+.CRCategoria{
+	border-style: ridge;
+	border-radius: 10px;	
+}
 aside{
 
 	float: left;
@@ -179,4 +183,36 @@ footer{
 	margin-top: 1%;
 	border: 1px solid black;
 	border-radius: 10px;
+}
+
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+}
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#009999;
+}
+.evenrowcolor{
+	background-color:#99FFCC;
+}
+
+#alternatecolor{
+	margin-left: 22%;
+	margin-top: 10%;
 }
